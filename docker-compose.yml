@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  fpm:
+    image: php:7.2-fpm
+    volumes:
+      - ./todo:/var/www
+  nginx:
+    image: nginx:1.17
+    volumes:
+      - ./todo:/var/www
+      - ./docker/nginx:/etc/nginx/conf.d
+    links:
+      - fpm
+    ports:
+      - 8000:80
