@@ -6,14 +6,10 @@ services:
     volumes:
       - ./todo:/var/www
     working_dir: /var/www
-    links:
-      - mysql
   fpm:
     image: php:7.2-fpm
     volumes:
       - ./todo:/var/www
-    links:
-      - mysql
   nginx:
     image: nginx:1.17
     volumes:
@@ -23,15 +19,3 @@ services:
       - fpm
     ports:
       - 8000:80
-  mysql:
-    image: mysql:5.7
-    environment:
-      MYSQL_DATABASE: todoapp
-      MYSQL_ROOT_PASSWORD: bigsecret
-      MYSQL_USER: todoapp
-      MYSQL_PASSWORD: secret
-    volumes:
-      - mysql:/var/lib/mysql
-
-volumes:
-  mysql: ~
