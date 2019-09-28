@@ -27,6 +27,7 @@ services:
     image: mysql:5.7
     environment:
       MYSQL_DATABASE: todoapp
+      MYSQL_ROOT_PASSWORD: bigsecret
       MYSQL_USER: todoapp
       MYSQL_PASSWORD: secret
     volumes:
