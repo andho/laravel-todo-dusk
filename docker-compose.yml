@@ -2,7 +2,7 @@ version: "3"
 
 services:
   cli:
-    image: php:7.2
+    build: ./docker/cli
     volumes:
       - ./todo:/var/www
     working_dir: /var/www
