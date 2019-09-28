@@ -9,7 +9,7 @@ services:
     extra_hosts:
       - "mysql:172.31.16.166"
   fpm:
-    image: php:7.2-fpm
+    build: ./docker/fpm
     volumes:
       - ./todo:/var/www
     extra_hosts:
