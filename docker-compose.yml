@@ -6,10 +6,14 @@ services:
     volumes:
       - ./todo:/var/www
     working_dir: /var/www
+    extra_hosts:
+      - "mysql:172.31.16.166"
   fpm:
     image: php:7.2-fpm
     volumes:
       - ./todo:/var/www
+    extra_hosts:
+      - "mysql:172.31.16.166"
   nginx:
     image: nginx:1.17
     volumes:
