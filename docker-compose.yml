@@ -10,6 +10,8 @@ services:
     image: php:7.2-fpm
     volumes:
       - ./todo:/var/www
+    links:
+      - mysql
   nginx:
     image: nginx:1.17
     volumes:
