@@ -26,9 +26,9 @@ services:
     environment:
       MYSQL_DATABASE: todoapp
       MYSQL_USER: todoapp
+      MYSQL_PASSWORD: secret
     volumes:
       - mysql:/var/lib/mysql
 
 volumes:
   mysql: ~
-      MYSQL_PASSWORD: secret
