@@ -1,6 +1,11 @@
 version: "3"
 
 services:
+  cli:
+    image: php:7.2
+    volumes:
+      - ./todo:/var/www
+    working_dir: /var/www
   fpm:
     image: php:7.2-fpm
     volumes:
