@@ -19,3 +19,14 @@ services:
       - fpm
     ports:
       - 8000:80
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: todoapp
+      MYSQL_USER: todoapp
+    volumes:
+      - mysql:/var/lib/mysql
+
+volumes:
+  mysql: ~
+      MYSQL_PASSWORD: secret
