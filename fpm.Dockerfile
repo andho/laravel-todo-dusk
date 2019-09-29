@@ -23,3 +23,4 @@ RUN cd /var/www && composer dump-autoload --no-scripts --no-dev --optimize && \
     chown -R www-data:www-data /var/www/storage
 
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["php-fpm"]
