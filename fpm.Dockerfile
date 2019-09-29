@@ -1,5 +1,7 @@
 FROM php:7.2-fpm
 
+ADD ./docker/build/fpm/entrypoint.sh /entrypoint.sh
+
 ADD ./todo/composer.json /var/www/composer.json
 ADD ./todo/composer.lock /var/www/composer.lock
 
@@ -19,3 +21,5 @@ ADD ./todo /var/www
 
 RUN cd /var/www && composer dump-autoload --no-scripts --no-dev --optimize && \
     chown -R www-data:www-data /var/www/storage
+
+ENTRYPOINT ["/entrypoint.sh"]
