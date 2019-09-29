@@ -23,6 +23,7 @@ RUN unlink /var/log/nginx/access.log \
 # Copy nginx stub_status config
 ADD ./todo /var/www
 ADD ./docker/build/nginx/conf.d /etc/nginx/conf.d
+ADD ./docker/build/nginx/nginx.conf /etc/nginx/nginx.conf
 
 # API_KEY is required for configuring the NGINX Amplify Agent.
 # It could be your real API key for NGINX Amplify here if you wanted
