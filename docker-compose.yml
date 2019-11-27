@@ -6,14 +6,14 @@ services:
     volumes:
       - ./todo:/var/www
     working_dir: /var/www
-    extra_hosts:
-      - "mysql:172.31.16.166"
+    links:
+      - mysql
   fpm:
     build: ./docker/fpm
     volumes:
       - ./todo:/var/www
-    extra_hosts:
-      - "mysql:172.31.16.166"
+    links:
+      - mysql
   nginx:
     image: nginx:1.17
     volumes:
@@ -23,3 +23,15 @@ services:
       - fpm
     ports:
       - 8000:80
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todoapp
+      MYSQL_USER: todoapp
+      MYSQL_PASSWORD: secret
+
+volumes:
+  mysql_data: ~
