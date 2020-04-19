@@ -1,0 +1,7 @@
+stages:
+  - build
+
+composer:
+  stage: build
+  script:
+    composer install
