@@ -1,7 +1,12 @@
+image: php:7.2
+
 stages:
   - build
 
 composer:
   stage: build
   script:
+    curl -sS https://getcomposer.org/installer | php
+    mv composer.phar /usr/local/bin/composer 
+    apt-get update && apt-get install -y unzip
     composer install
