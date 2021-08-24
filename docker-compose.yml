@@ -12,6 +12,7 @@ services:
     build: ./docker/fpm
     volumes:
       - ./todo:/var/www
+      - ./docker/fpm/www.conf:/usr/local/etc/php-fpm.d/www.conf
     links:
       - mysql
     working_dir: /var/www
