@@ -33,6 +33,18 @@ services:
       MYSQL_DATABASE: todoapp
       MYSQL_USER: todoapp
       MYSQL_PASSWORD: secret
+  selenium:
+    image: selenium/standalone-chrome:4.0.0-alpha-7-prerelease-20200921
+    depends_on:
+      - nginx
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - 5901:5900
+  selenium-recorder:
+    image: selenium/video:ffmpeg-4.3.1-20200921
+    volumes:
+      - ./videos:/videos
 
 volumes:
   mysql_data: ~
