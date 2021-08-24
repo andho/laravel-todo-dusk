@@ -1,0 +1,11 @@
+
+
+.PHONY: init
+init: start-containers
+	cp -n todo/.env.example todo/.env
+	docker-compose exec fpm php artisan key:generate
+	docker-compose exec fpm php artisan migrate
+
+.PHONY: start-containers
+start-containers:
+	docker-compose up -d nginx
