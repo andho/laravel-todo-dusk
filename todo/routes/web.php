@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TasksController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,12 +16,15 @@
 */
 
 Route::get('/', function () {
-    return view('main');
+    return view('welcome');
 });
 
-Route::get('current_tasks', 'TaskController@index');
-Route::get('archived_tasks', 'TaskController@archived');
-Route::post('create_task', 'TaskController@store');
-Route::post('delete_task/{id}', 'TaskController@destroy');
-Route::post('archive_task/{id}', 'TaskController@archive');
-Route::post('edit_task', 'TaskController@edit');
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::get('/dashboard',[TasksController::class, 'index'])->name('dashboard');
+
+    Route::get('/task',[TasksController::class, 'add']);
+    Route::post('/task',[TasksController::class, 'create']);
+    
+    Route::get('/task/{task}', [TasksController::class, 'edit']);
+    Route::post('/task/{task}', [TasksController::class, 'update']);
+});
